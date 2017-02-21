@@ -2,7 +2,7 @@
 
 var app= angular.module('confusionApp', [])
 
-        app.controller('MenuController', ['$scope', function($scope) {
+        .controller('MenuController', ['$scope', function($scope) {
             
             $scope.tab = 1;
             $scope.filtText = '';
@@ -73,7 +73,7 @@ var app= angular.module('confusionApp', [])
             };
         }])
 
-       app.controller('ContactController', ['$scope', function($scope) {
+       .controller('ContactController', ['$scope', function($scope) {
 
             $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             
@@ -103,7 +103,7 @@ var app= angular.module('confusionApp', [])
                 }
             };
         }])
-        app.controller('DishDetailController', ['$scope', function($scope) {
+        .controller('DishDetailController', ['$scope', function($scope) {
 
             var dish={
                           name:'Uthapizza',
@@ -151,17 +151,20 @@ var app= angular.module('confusionApp', [])
             
         }])
 
-        app.controller('DishCommentController', ['$scope', function($scope) {
+        .controller('DishCommentController', ['$scope', function($scope) {
 
-            $scope.comment= "";
-            $scope.name="";
-            $scope.rating="";
+            $scope.comment= {};
 
             $scope.submitComment = function () {
                 
-                $scope.date = new Date().toISOString();
+                $scope.comment.date = new Date().toISOString();
 
-                $scope.dish.comments.push({$scope.rating, $scope.comment, $scope.name,$scope.date});
+                $scope.dish.comments.push({
+                  rating: $scope.comment.rating, 
+                  comment: $scope.comment.comment, 
+                  author: $scope.comment.name, 
+                  date: $scope.comment.date
+                });
                 
                 
             }
