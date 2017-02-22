@@ -153,7 +153,9 @@ var app= angular.module('confusionApp', [])
 
         .controller('DishCommentController', ['$scope', function($scope) {
 
-            $scope.comment= {};
+           var comment= {rating:5};
+
+           $scope.comment = comment;
 
             $scope.submitComment = function () {
                 
