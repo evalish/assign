@@ -162,7 +162,7 @@ var app= angular.module('confusionApp', [])
                 $scope.dish.comments.push({
                   rating: $scope.comment.rating, 
                   comment: $scope.comment.comment, 
-                  author: $scope.comment.name, 
+                  author: $scope.comment.author, 
                   date: $scope.comment.date
                 });
                 
