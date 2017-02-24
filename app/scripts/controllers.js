@@ -78,14 +78,14 @@
 
            var comment= {rating:5};
 
-           $scope.comment1 = comment;
+           $scope.comment = comment;
 
             $scope.submitComment = function () {
                 
                 $scope.comment.date = new Date().toISOString();
 
                 $scope.dish.comments.push({
-                  rating: $scope.comment1.rating, 
+                  rating: $scope.comment.rating, 
                   comment: $scope.comment.comment, 
                   author: $scope.comment.author, 
                   date: $scope.comment.date
