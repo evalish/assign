@@ -42,8 +42,8 @@ angular.module('confusionApp')
                                    author:"25 Cent",
                                    date:"2011-12-02T17:57:28.556094Z"
                                }                                                          ]
-                        },
-                        {
+                          },
+                          {
                           name:'Zucchipakoda',
                            image: 'images/zucchipakoda.png',
                           category: 'appetizer',
@@ -81,8 +81,8 @@ angular.module('confusionApp')
                                    author:"25 Cent",
                                    date:"2011-12-02T17:57:28.556094Z"
                                }                                                          ]
-                        },
-                        {
+                          },
+                          {
                           name:'Vadonut',
                            image: 'images/vadonut.png',
                           category: 'appetizer',
@@ -121,8 +121,8 @@ angular.module('confusionApp')
                                    date:"2011-12-02T17:57:28.556094Z"
                                }
                                                           ]
-                        },
-                        {
+                          },
+                          {
                           name:'ElaiCheese Cake',
                            image: 'images/elaicheesecake.png',
                           category: 'dessert',
@@ -160,14 +160,15 @@ angular.module('confusionApp')
                                    author:"25 Cent",
                                    date:"2011-12-02T17:57:28.556094Z"
                                }                                                          ]
-                        }
-                        ];
+                          }
+                          ];
               this.getDishes = function(){
                                         return dishes;
                                     };
                     this.getDish = function (index) {
                                         return dishes[index];
-                };
+                                                    };
                 
 
-            	});
+                                          }
+               );

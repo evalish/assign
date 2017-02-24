@@ -2,54 +2,58 @@
 
   angular.module('confusionApp')
 
-         .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+         .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) { 
             
-            $scope.tab = 1;
-            $scope.filtText = '';
-            $scope.showDetails = false;
+               $scope.tab = 1;
+               $scope.filtText = '';
+               $scope.showDetails = false;
 
-            $scope.dishes= menuFactory.getDishes();
+               $scope.dishes= menuFactory.getDishes();
                         
-            $scope.select = function(setTab) {
+               $scope.select = function(setTab) {
                 $scope.tab = setTab;
                 
-                if (setTab === 2) {
+                if (setTab === 2)      {
                     $scope.filtText = "appetizer";
-                }
+                                       }
                 else if (setTab === 3) {
                     $scope.filtText = "mains";
-                }
+                                       }
                 else if (setTab === 4) {
                     $scope.filtText = "dessert";
-                }
-                else {
+                                       }
+                else                   {
                     $scope.filtText = "";
-                }
-            };
+                                        }
+                                                };
 
-            $scope.isSelected = function (checkTab) {
+               $scope.isSelected = function (checkTab) {
                 return ($scope.tab === checkTab);
-            };
+                                                    };
     
-            $scope.toggleDetails = function() {
+               $scope.toggleDetails = function() {
                 $scope.showDetails = !$scope.showDetails;
-            };
-        }])
+                                                 };
+                                                                                                }                    
+                                        ]
+                    )
 
-       .controller('ContactController', ['$scope', function($scope) {
+         .controller('ContactController', ['$scope', function($scope) {
 
-            $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
+               $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
             
-            var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+               var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
             
-            $scope.channels = channels;
-            $scope.invalidChannelSelection = false;
+               $scope.channels = channels;
+               $scope.invalidChannelSelection = false;
                         
-        }])
+                                                                      }                                 
+                                          ]
+                    )
 
-        .controller('FeedbackController', ['$scope', function($scope) {
+         .controller('FeedbackController', ['$scope', function($scope) {
             
-            $scope.sendFeedback = function() {
+              $scope.sendFeedback = function() {
                 
                 console.log($scope.feedback);
                 
@@ -63,34 +67,40 @@
                     $scope.feedback.mychannel="";
                     $scope.feedbackForm.$setPristine();
                     console.log($scope.feedback);
-                }
-            };
-        }])
-        .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+                     }
+                                             };
+        }
+                                           ]
+                    )
+         .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
               var dish= menuFactory.getDish(3)
             
             
-            $scope.dish = dish;
+              $scope.dish = dish;
             
-        }])
+                                                                                                     }
+                                             ]          
+                    )
 
-        .controller('DishCommentController', ['$scope', function($scope) {
+         .controller('DishCommentController', ['$scope', function($scope) {
 
-           var comment= {rating:5};
+              var comment= {rating:5};
+ 
+              $scope.comment = comment;
 
-           $scope.comment = comment;
-
-            $scope.submitComment = function () {
+              $scope.submitComment = function () {
                 
-                $scope.comment.date = new Date().toISOString();
+                 $scope.comment.date = new Date().toISOString();
 
-                $scope.dish.comments.push({
+                 $scope.dish.comments.push({
                   rating: $scope.comment.rating, 
                   comment: $scope.comment.comment, 
                   author: $scope.comment.author, 
                   date: $scope.comment.date
-                });
+                                           }); 
                 
                 
-            }
-        }]);
+                                                 }
+                                                                           }
+                                             ]
+                    );
