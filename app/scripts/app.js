@@ -18,4 +18,5 @@
                 controller  : 'DishDetailController'
             })
             .otherwise('/contactus');
-    });
+                                    }
+         );

@@ -24,19 +24,19 @@
                                        }
                 else                   {
                     $scope.filtText = "";
-                                        }
+                                       }
                                                 };
 
                $scope.isSelected = function (checkTab) {
                 return ($scope.tab === checkTab);
-                                                    };
+                                                       };
     
                $scope.toggleDetails = function() {
                 $scope.showDetails = !$scope.showDetails;
                                                  };
                                                                                                 }                    
                                         ]
-                    )
+                     )
 
          .controller('ContactController', ['$scope', function($scope) {
 
@@ -60,7 +60,7 @@
                 if ($scope.feedback.agree && ($scope.feedback.mychannel == "")) {
                     $scope.invalidChannelSelection = true;
                     console.log('incorrect');
-                }
+                                                                                }
                 else {
                     $scope.invalidChannelSelection = false;
                     $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
@@ -68,17 +68,17 @@
                     $scope.feedbackForm.$setPristine();
                     console.log($scope.feedback);
                      }
-                                             };
-        }
+                                                };
+                                                                       }
                                            ]
                     )
-         .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
-              var dish= menuFactory.getDish(3)
+         .controller('DishDetailController', ['$scope', '$routeParams', 'menuFactory', function($scope, $routeParams, menuFactory) {
+              var dish= menuFactory.getDish(parseInt($routeParams.id,10));
             
             
               $scope.dish = dish;
             
-                                                                                                     }
+                                                                                                                                    }
                                              ]          
                     )
 
