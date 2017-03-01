@@ -87,23 +87,36 @@ angular.module('confusionApp')
 
 .controller('DishCommentController', ['$scope', function($scope) {
 
-    var comment = {
-        rating: 5
-    };
+        var comment = {
+            rating: 5
+        };
 
-    $scope.comment = comment;
+        $scope.comment = comment;
 
-    $scope.submitComment = function() {
+        $scope.submitComment = function() {
 
-        $scope.comment.date = new Date().toISOString();
+            $scope.comment.date = new Date().toISOString();
 
-        $scope.dish.comments.push({
-            rating: $scope.comment.rating,
-            comment: $scope.comment.comment,
-            author: $scope.comment.author,
-            date: $scope.comment.date
-        });
+            $scope.dish.comments.push({
+                rating: $scope.comment.rating,
+                comment: $scope.comment.comment,
+                author: $scope.comment.author,
+                date: $scope.comment.date
+            });
 
 
-    }
-}]);
+        }
+    }])
+    .controller('indexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
+        var dish = menuFactory.getDish(0);
+        $scope.dish = dish;
+        var promotion = menuFactory.getPromotion(0);
+        $scope.promotion = promotion;
+        var leader = corporateFactory.getLeader(3);
+        $scope.leader = leader;
+
+    }])
+    .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
+        var leaders = corporateFactory.getLeaders();
+        $scope.leaders = leaders;
+    }]);
