@@ -18,8 +18,8 @@ angular.module('confusionApp')
 
     ];
 
-    this.getDishes = function(){
-                                        return $resource(baseURL+"dishes/:id",null,  {'update':{method:'PUT' }});
+     this.getDishes = function(){
+                                        return $resource(baseURL+"dishees/:id",null,  {'update':{method:'PUT' }});
                                     };
     
 
