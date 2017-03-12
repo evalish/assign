@@ -9,13 +9,14 @@ angular.module('confusionApp')
     $scope.showDetails = false;
     $scope.showMenu = false;
     $scope.message = "Loading ...";
-    menuFactory.getDishes().query( function(response) {
-                    $scope.dishes = response;
-                    $scope.showMenu = true;
-                },
-                function(response) {
-                    $scope.message = "Error: "+response.status + " " + response.statusText;
-                });
+    menuFactory.getDishes().query(
+        function(response) {
+            $scope.dishes = response;
+            $scope.showMenu = true;
+        },
+        function(response) {
+            $scope.message = "Error: " + response.status + " " + response.statusText;
+        });
 
     $scope.select = function(setTab) {
         $scope.tab = setTab;
@@ -90,54 +91,65 @@ angular.module('confusionApp')
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
         $scope.dish = {};
-         $scope.showDish = false;
-            $scope.message="Loading ...";
-                        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id,10)})
-                        .$promise.then(
-                            function(response){
-                                $scope.dish = response;
-                                $scope.showDish = true;
-                            },
-                            function(response) {
-                                $scope.message = "Error: "+response.status + " " + response.statusText;
-                            }
+        $scope.showDish = false;
+        $scope.message = "Loading ...";
+        $scope.dish = menuFactory.getDishes().get({
+                id: parseInt($stateParams.id, 10)
+            })
+            .$promise.then(
+                function(response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
             );
     }])
 
-.controller('DishCommentController', ['$scope', 'menuFactory', function($scope,menuFactory) {
+.controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory) {
         var comment = {
             rating: 5,
-            comment:"", 
-            author:"", 
-            date:""
+            comment: "",
+            author: "",
+            date: ""
         };
 
         $scope.comment = comment;
 
-         $scope.submitComment = function () {
-                                $scope.comment.date = new Date().toISOString();
-                console.log($scope.comment);
-                                $scope.dish.comments.push($scope.comment);
+        $scope.submitComment = function() {
+            $scope.comment.date = new Date().toISOString();
+            console.log($scope.comment);
+            $scope.dish.comments.push($scope.comment);
 
-                menuFactory.getDishes().update({id:$scope.dish.id},$scope.dish);
-                                $scope.commentForm.$setPristine();
-                                $scope.comment = {rating:5, comment:"", author:"", date:""};
+            menuFactory.getDishes().update({
+                id: $scope.dish.id
+            }, $scope.dish);
+            $scope.commentForm.$setPristine();
+            $scope.comment = {
+                rating: 5,
+                comment: "",
+                author: "",
+                date: ""
             };
+        };
     }])
     .controller('indexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
         $scope.showDish = false;
-                        $scope.message="Loading ...";
-                        $scope.dish = menuFactory.getDishes().get({id:0})
-                        .$promise.then(
-                            function(response){
-                                $scope.dish = response;
-                                $scope.showDish = true;
-                            },
-                            function(response) {
-                                $scope.message = "Error: "+response.status + " " + response.statusText;
-                            }
-                        );
+        $scope.message = "Loading ...";
+        $scope.dish = menuFactory.getDishes().get({
+                id: 0
+            })
+            .$promise.then(
+                function(response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = "Error: " + response.status + " " + response.statusText;
+                }
+            );
         var promotion = menuFactory.getPromotion(0);
         $scope.promotion = promotion;
         var leader = corporateFactory.getLeader(3);
