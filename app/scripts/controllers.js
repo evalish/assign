@@ -167,7 +167,7 @@ angular.module('confusionApp')
             );
 
        
-        $scope.leader = corporateFactory.getLeader(3).get({
+        $scope.leader = corporateFactory.getLeaders(3).get({
             id: 3
         })
         .$promise.then(
@@ -182,6 +182,17 @@ angular.module('confusionApp')
 
     }])
     .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-        var leaders = corporateFactory.getLeaders();
-        $scope.leaders = leaders;
+        $scope.showLeaders = false;
+        
+        corporateFactory.getLeaders().query(
+        function(response) {
+            $scope.leaders = response;
+            $scope.showLeaders = true;
+        },
+        function(response) {
+            $scope.message = "Error: " + response.status + " " + response.statusText;
+        });
+
     }]);
+
+

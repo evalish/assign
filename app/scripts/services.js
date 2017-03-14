@@ -19,7 +19,7 @@ angular.module('confusionApp')
 
     this.getPromotion = function() {
         return $resource(baseURL + "promotions/:id", null, {
-            method: 'POST'
+            method: 'PUT'
         });
     };
     // that returns a selected promotion.
@@ -27,18 +27,18 @@ angular.module('confusionApp')
 
 }])
 
-.service('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
+.factory('corporateFactory',['$resource', 'baseURL', function($resource, baseURL) {
 
+   var corpfac = {};
 
-
-
-    this.getLeader = function() {
-
-        return $resource(baseURL + "leadership/:id", null, {
-            method: 'POST'
-        });
+   corpfac.getLeaders = function() {
+ return $resource(baseURL + "leadership/:id", null, {
+                method: 'PUT'
+            }
+        );
     };
+ 
 
-
-   
+    return corpfac;
+ 
 }]);
